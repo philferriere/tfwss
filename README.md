@@ -48,9 +48,7 @@ Dataset with "grabcut" segmentations and results as well as pre-trained models c
 
 The fully supervised version of the instance segmentation network whose performance we're trying to match is trained using the RGB images as inputs. The weakly supervised version is trained using **4-channel inputs: RGB + a binary mask with a filled bounding box of the object instance**. In the latter case, the same RGB image may appear in several input samples (as many times as there are object instances associated with that RGB image).
 
-In both cases (fully supervised and weakly supervised), the output labels used for training are **NOT** user-provided detailed groundtruth annotations. There are no such groundtruths in the weakly supervised scenario. Instead, the **labels are the segmentation masks generated using the GrabCut+ method**.
-
-Both models are trained to regress from an image and bounding box information to a **generated** segmentation mask.
+To be clear, the output labels used for training are **NOT** user-provided detailed groundtruth annotations. There are no such groundtruths in the weakly supervised scenario. Instead, the **labels are the segmentation masks generated using the GrabCut+ method**. The weakly supoervised model is trained to regress from an image and bounding box information to a **generated** segmentation mask.
 
 ## Testing
 
