@@ -99,3 +99,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Datasets/Models
+*.bak
+*.zip
+*.tar
+*.ffs_db
+Results/
+.idea/
