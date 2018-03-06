@@ -40,9 +40,9 @@ The recommended way to test this implementation is to use the following jupyter 
 - [`"Simple Does It" Grabcut Training for Instance Segmentation`](tfwss/model_train.ipynb): This notebook performs training of the SDI Grabcut weakly supervised model for **instance segmentation**. Following the instructions provided in Section *"6. Instance Segmentation Results"* of the **"Simple Does It"** paper, we use the Berkeley-augmented Pascal VOC segmentation dataset that provides per-instance segmentation masks for VOC2012 data. The Berkley augmented dataset can be downloaded from [here](http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/semantic_contours/benchmark.tgz). Again, the SDI Grabcut training is done using a **4-channel input** VGG16 network pre-trained on ImageNet, so make sure to run the [`VGG16 Net Surgery`](tfwss/net_surgery.ipynb) notebook first!
 - [`"Simple Does It" Weakly Supervised Instance Segmentation (Testing)`](tfwss/model_test.ipynb): The sample results shown in the notebook come from running our trained model on the **validation** split of the Berkeley-augmented dataset.
 
-## Links
+## Link to Pre-trained Model
 
-Dataset with "grabcut" segmentations and results as well as pre-trained models can be found [here](http://bit.ly/tf-wss).
+Dataset with "grabcut" segmentations and results as well as pre-trained models (`vgg_16_4chan_weak.ckpt-50000`) can be found [here](http://bit.ly/tf-wss).
 
 ## Training
 
