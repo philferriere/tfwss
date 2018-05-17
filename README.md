@@ -40,9 +40,29 @@ The recommended way to test this implementation is to use the following jupyter 
 - [`"Simple Does It" Grabcut Training for Instance Segmentation`](tfwss/model_train.ipynb): This notebook performs training of the SDI Grabcut weakly supervised model for **instance segmentation**. Following the instructions provided in Section *"6. Instance Segmentation Results"* of the **"Simple Does It"** paper, we use the Berkeley-augmented Pascal VOC segmentation dataset that provides per-instance segmentation masks for VOC2012 data. The Berkley augmented dataset can be downloaded from [here](http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/semantic_contours/benchmark.tgz). Again, the SDI Grabcut training is done using a **4-channel input** VGG16 network pre-trained on ImageNet, so make sure to run the [`VGG16 Net Surgery`](tfwss/net_surgery.ipynb) notebook first!
 - [`"Simple Does It" Weakly Supervised Instance Segmentation (Testing)`](tfwss/model_test.ipynb): The sample results shown in the notebook come from running our trained model on the **validation** split of the Berkeley-augmented dataset.
 
-## Link to Pre-trained Model
+## Link to Pre-trained model and BK-VOC data files
 
-Dataset with "grabcut" segmentations and results as well as pre-trained models (`vgg_16_4chan_weak.ckpt-50000`) can be found [here](http://bit.ly/tf-wss).
+The pre-processed BK-VOC dataset, "grabcut" segmentations, and results as well as pre-trained models (`vgg_16_4chan_weak.ckpt-50000`) can be found [here](http://bit.ly/tf-wss):
+
+![](tfwss/img/data_files.png) 
+
+If you'd rather download the Berkeley-augmented Pascal VOC segmentation dataset that provides per-instance segmentation masks for VOC2012 data from its origin, click [here](
+http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/semantic_contours/benchmark.tgz). Then, execute lines similar to [these lines](https://github.com/philferriere/tfwss/blob/ff4a025b19c5fb381cba3a2e492777ca040e1c5b/tfwss/dataset.py#L453-L455)  in `dataset.py` to generate the intermediary files used by this project:
+
+```python
+if __name__ == '__main__':
+    dataset = BKVOCDataset()
+    dataset.prepare()
+```
+
+Make sure to set the paths at the [top](https://github.com/philferriere/tfwss/blob/ff4a025b19c5fb381cba3a2e492777ca040e1c5b/tfwss/dataset.py#L55-L58) of `dataset.py` to the correct location:
+
+```python
+if sys.platform.startswith("win"):
+    _BK_VOC_DATASET = "E:/datasets/bk-voc/benchmark_RELEASE/dataset"
+else:
+    _BK_VOC_DATASET = '/media/EDrive/datasets/bk-voc/benchmark_RELEASE/dataset'
+```
 
 ## Training
 
