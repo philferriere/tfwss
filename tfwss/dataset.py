@@ -102,6 +102,10 @@ class BKVOCDataset(object):
         self._train_img_mask_pairs_file = self._dataset_root + '/train_img_mask_pairs.txt'
         self._test_img_mask_pairs_file = self._dataset_root + '/val_img_mask_pairs.txt'
 
+        # Load ID files
+        if not self._load_img_mask_pairs_file(self._img_mask_pairs_file):
+            self.prepare()
+
         # Init batch parameters
         if self._phase == 'train':
             self._load_img_mask_pairs_file(self._train_img_mask_pairs_file)
@@ -123,10 +127,8 @@ class BKVOCDataset(object):
     def prepare(self):
         """Do all the preprocessing needed before training/val/test samples can be generated.
         """
-        # Load image/mask pairs text file and the masks bbox info
-        if not self._load_img_mask_pairs_file(self._img_mask_pairs_file):
-            # Convert instance masks stored in .mat files to .png files and compute their bboxes
-            self._mat_masks_to_png()
+        # Convert instance masks stored in .mat files to .png files and compute their bboxes
+        self._mat_masks_to_png()
     
         # Generate grabcuts, if they don't exist yet
         self._bboxes_to_grabcuts()
@@ -449,7 +451,11 @@ class BKVOCDataset(object):
                     bboxes = [bbox]
                     masks = [self.pred_masks_path + '/' + os.path.basename(img_mask_pair[1])]
 
-
-if __name__ == '__main__':
-    dataset = BKVOCDataset()
-    dataset.prepare()
+# def test():
+#     dataset = BKVOCDataset()
+#     dataset.print_config()
+#     # WARNING: THE NEXT LINE WILL FORCE REGENERATION OF INTERMEDIARY FILES
+#     # dataset.prepare()
+#
+# if __name__ == '__main__':
+#     test()
