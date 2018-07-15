@@ -13,6 +13,7 @@ ffmpeg=3.4.1=0
 freetype=2.7=vc14_1
 html5lib=0.999=py36_0
 icu=58.2=vc14_0
+imageio=2.2.0
 ipykernel=4.6.1=py36_0
 ipython=6.1.0=py36_0
 ipython_genutils=0.2.0=py36_0
